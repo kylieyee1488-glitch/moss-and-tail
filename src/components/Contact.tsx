@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { PawPrint, Heart, Sparkle } from "./PawPrint";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -11,8 +12,14 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-[#E8EDE3] py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-start">
+    <section id="contact" className="relative bg-[#E8EDE3] py-20 md:py-28 overflow-hidden">
+      {/* Decorative */}
+      <PawPrint className="absolute top-12 left-8 opacity-15 rotate-12 animate-float-slow" color="#3B5323" size={36} />
+      <PawPrint className="absolute bottom-16 right-12 opacity-15 -rotate-12 animate-float-slow delay-300" color="#3B5323" size={28} />
+      <Sparkle className="absolute top-32 right-1/4 opacity-50 animate-pulse-soft" color="#C4A882" size={16} />
+      <Heart className="absolute bottom-24 left-1/3 opacity-60 animate-float" color="#E8C9B5" size={20} />
+
+      <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-start">
         {/* Left: text */}
         <div>
           <span className="inline-block bg-[#FAF7F0] text-[#3B5323] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
@@ -53,8 +60,8 @@ export default function Contact() {
         {/* Right: form */}
         <div className="bg-[#FAF7F0] rounded-3xl p-8 border border-[#E8EDE3] shadow-sm">
           {submitted ? (
-            <div className="text-center py-12">
-              <div className="text-6xl mb-4">🐾</div>
+            <div className="text-center py-12 animate-fade-up">
+              <div className="text-6xl mb-4 inline-block animate-wag">🐾</div>
               <h3 className="font-display font-bold text-[#2C3321] text-2xl mb-3">
                 Paw-some!
               </h3>
@@ -62,6 +69,11 @@ export default function Contact() {
                 We've received your message and will be in touch within one
                 business day. We can't wait to welcome your pup!
               </p>
+              <div className="flex justify-center gap-2 mt-6">
+                <Heart color="#E8C9B5" size={18} className="animate-heart-pop" />
+                <Heart color="#E8C9B5" size={18} className="animate-heart-pop" />
+                <Heart color="#E8C9B5" size={18} className="animate-heart-pop" />
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
@@ -130,9 +142,10 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="bg-[#3B5323] text-[#FAF7F0] font-bold text-sm py-3.5 rounded-full hover:bg-[#5C7A3E] transition-colors mt-1"
+                className="group bg-[#3B5323] text-[#FAF7F0] font-bold text-sm py-3.5 rounded-full hover:bg-[#5C7A3E] transition-all hover:-translate-y-0.5 hover:shadow-lg mt-1 inline-flex items-center justify-center gap-2"
               >
-                Send Message 🐾
+                Send Message
+                <span className="inline-block group-hover:animate-wag">🐾</span>
               </button>
             </form>
           )}

@@ -45,3 +45,5 @@ next-env.d.ts
 /My dog*.jpeg
 /Customer Dog*.jpeg
 /reference.png*
+
+.vercel

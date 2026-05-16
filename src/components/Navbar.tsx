@@ -16,13 +16,13 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-[#FAF7F0]/95 backdrop-blur-sm border-b border-[#E8EDE3]">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3">
+        <a href="#" className="group flex items-center gap-3">
           <Image
             src="/logo.jpeg"
             alt="Moss & Tail logo"
             width={44}
             height={44}
-            className="rounded-full object-cover"
+            className="rounded-full object-cover transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
           />
           <div className="leading-tight">
             <span className="block font-display font-bold text-[#3B5323] text-lg tracking-wide">

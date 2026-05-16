@@ -1,3 +1,5 @@
+import { PawPrint, Sparkle } from "./PawPrint";
+
 const features = [
   {
     icon: "📹",
@@ -27,8 +29,13 @@ const features = [
 
 export default function WhyUs() {
   return (
-    <section className="bg-[#FAF7F0] py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="relative bg-[#FAF7F0] py-20 md:py-28 overflow-hidden">
+      {/* Decorative */}
+      <Sparkle className="absolute top-16 left-1/4 opacity-50 animate-pulse-soft" color="#C4A882" size={18} />
+      <Sparkle className="absolute bottom-24 right-16 opacity-40 animate-pulse-soft delay-200" color="#C4A882" size={14} />
+      <PawPrint className="absolute top-1/3 right-8 opacity-10 rotate-12 animate-float-slow" color="#3B5323" size={56} />
+
+      <div className="relative max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="inline-block bg-[#E8EDE3] text-[#3B5323] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
@@ -45,12 +52,12 @@ export default function WhyUs() {
 
         {/* Features grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {features.map((f) => (
+          {features.map((f, i) => (
             <div
               key={f.title}
-              className="bg-[#F0EBE0] rounded-3xl p-7 border border-[#E8EDE3] flex flex-col items-start hover:border-[#C4A882] transition-colors"
+              className={`group bg-[#F0EBE0] rounded-3xl p-7 border border-[#E8EDE3] flex flex-col items-start card-lift animate-fade-up delay-${(i + 1) * 100}`}
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#3B5323] flex items-center justify-center text-2xl mb-5">
+              <div className="w-14 h-14 rounded-2xl bg-[#3B5323] flex items-center justify-center text-2xl mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                 {f.icon}
               </div>
               <h3 className="font-display font-bold text-[#2C3321] text-lg mb-3">

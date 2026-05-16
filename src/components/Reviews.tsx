@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Heart, PawPrint } from "./PawPrint";
 
 const reviews = [
   {
@@ -35,7 +36,13 @@ function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: count }).map((_, i) => (
-        <span key={i} className="text-[#C4A882] text-base">★</span>
+        <span
+          key={i}
+          className={`text-[#C4A882] text-base inline-block animate-bounce-soft delay-${(i + 1) * 100}`}
+          style={{ animationDelay: `${i * 0.1}s` }}
+        >
+          ★
+        </span>
       ))}
     </div>
   );
@@ -43,11 +50,17 @@ function Stars({ count }: { count: number }) {
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="bg-[#FAF7F0] py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="reviews" className="relative bg-[#FAF7F0] py-20 md:py-28 overflow-hidden">
+      {/* Decorative */}
+      <Heart className="absolute top-16 left-12 opacity-50 animate-float" color="#E8C9B5" size={22} />
+      <Heart className="absolute bottom-24 right-12 opacity-50 animate-float delay-300" color="#E8C9B5" size={18} />
+      <PawPrint className="absolute top-1/2 right-8 opacity-10 animate-float-slow" color="#3B5323" size={40} />
+
+      <div className="relative max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="inline-block bg-[#E8EDE3] text-[#3B5323] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+          <span className="inline-flex items-center gap-1.5 bg-[#E8EDE3] text-[#3B5323] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+            <Heart color="#3B5323" size={12} className="animate-heart-pop" />
             Happy Families
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-[#2C3321] mb-4">
@@ -61,17 +74,21 @@ export default function Reviews() {
 
         {/* Review grid */}
         <div className="grid sm:grid-cols-2 gap-6">
-          {reviews.map((r) => (
+          {reviews.map((r, i) => (
             <div
               key={r.name}
-              className="bg-[#F0EBE0] rounded-3xl p-7 border border-[#E8EDE3]"
+              className={`group bg-[#F0EBE0] rounded-3xl p-7 border border-[#E8EDE3] card-lift relative animate-fade-up delay-${Math.min((i + 1) * 100, 400)}`}
             >
+              {/* Quote mark decoration */}
+              <span className="absolute top-3 right-5 font-display text-6xl text-[#C4A882] opacity-30 leading-none select-none">
+                &ldquo;
+              </span>
               <Stars count={r.rating} />
               <p className="text-[#2C3321] text-sm leading-relaxed mt-4 mb-6 italic">
                 &ldquo;{r.text}&rdquo;
               </p>
               <div className="flex items-center gap-3">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#FAF7F0]">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#FAF7F0] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <Image
                     src={r.photo}
                     alt={`${r.dog} photo`}
@@ -90,21 +107,28 @@ export default function Reviews() {
         </div>
 
         {/* Overall rating strip */}
-        <div className="mt-12 bg-[#3B5323] rounded-3xl px-8 py-7 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-center sm:text-left">
+        <div className="mt-12 bg-[#3B5323] rounded-3xl px-8 py-7 flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
+          <PawPrint className="absolute -top-2 -right-2 opacity-10 rotate-12" color="#FAF7F0" size={80} />
+          <div className="text-center sm:text-left relative">
             <p className="font-display font-bold text-[#FAF7F0] text-2xl">
               5.0 out of 5
             </p>
             <p className="text-[#C4A882] text-sm mt-1">Based on 150+ reviews</p>
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-1 relative">
             {Array.from({ length: 5 }).map((_, i) => (
-              <span key={i} className="text-[#C4A882] text-2xl">★</span>
+              <span
+                key={i}
+                className="text-[#C4A882] text-2xl animate-bounce-soft"
+                style={{ animationDelay: `${i * 0.15}s` }}
+              >
+                ★
+              </span>
             ))}
           </div>
           <a
             href="#contact"
-            className="bg-[#FAF7F0] text-[#3B5323] font-bold text-sm px-7 py-3 rounded-full hover:bg-[#E8EDE3] transition-colors whitespace-nowrap"
+            className="bg-[#FAF7F0] text-[#3B5323] font-bold text-sm px-7 py-3 rounded-full hover:bg-[#E8EDE3] transition-all hover:-translate-y-0.5 hover:shadow-lg whitespace-nowrap relative"
           >
             Join Our Happy Families
           </a>

@@ -1,3 +1,5 @@
+import { PawPrint } from "./PawPrint";
+
 const services = [
   {
     icon: "🌙",
@@ -28,8 +30,12 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-[#F0EBE0] py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="services" className="relative bg-[#F0EBE0] py-20 md:py-28 overflow-hidden">
+      {/* Decorative paws */}
+      <PawPrint className="absolute top-12 right-12 opacity-10 rotate-12" color="#3B5323" size={64} />
+      <PawPrint className="absolute bottom-20 left-8 opacity-10 -rotate-12" color="#C4A882" size={48} />
+
+      <div className="relative max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="inline-block bg-[#E8EDE3] text-[#3B5323] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
@@ -45,18 +51,20 @@ export default function Services() {
         </div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((s) => (
             <div
               key={s.title}
-              className="relative bg-[#FAF7F0] rounded-3xl p-7 border border-[#E8EDE3] hover:border-[#C4A882] hover:shadow-sm transition-all"
+              className="group relative bg-[#FAF7F0] rounded-3xl p-7 border border-[#E8EDE3] hover:border-[#C4A882] card-lift"
             >
               {s.badge && (
-                <span className="absolute top-5 right-5 bg-[#3B5323] text-[#FAF7F0] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                <span className="absolute top-5 right-5 bg-[#3B5323] text-[#FAF7F0] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full animate-pulse-soft">
                   {s.badge}
                 </span>
               )}
-              <div className="text-4xl mb-4">{s.icon}</div>
+              <div className="text-4xl mb-4 inline-block transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
+                {s.icon}
+              </div>
               <h3 className="font-display font-bold text-[#2C3321] text-xl mb-3">
                 {s.title}
               </h3>
