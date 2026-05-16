@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "moss-and-tail",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd /d C:\\Users\\Thena Lee\\Desktop\\moss-tail-site && npm run dev"],
+      "port": 3000
+    }
+  ]
+}

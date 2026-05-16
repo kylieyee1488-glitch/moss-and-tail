@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest \"C:\\\\Users\\\\Thena Lee\\\\Desktop\\\\moss-tail-temp\" --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes)",
+      "Bash(Move-Item \"C:\\\\Users\\\\Thena Lee\\\\Desktop\\\\moss-tail-temp\\\\*\" \"C:\\\\Users\\\\Thena Lee\\\\Desktop\\\\Moss & Tail Landing Page\\\\\" -Force 2>&1; Move-Item \"C:\\\\Users\\\\Thena Lee\\\\Desktop\\\\moss-tail-temp\\\\.*\" \"C:\\\\Users\\\\Thena Lee\\\\Desktop\\\\Moss)",
+      "Bash(Tail Landing Page\\\\\" -Force)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\Thena Lee\\\\Desktop\\\\moss-tail-temp\" -Force)",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Thena Lee\\\\Desktop\\\\Moss & Tail Landing Page\\\\WhatsApp Image 2026-05-16 at 2.29.03 PM.jpeg\" \"C:\\\\Users\\\\Thena Lee\\\\Desktop\\\\Moss & Tail Landing Page\\\\public\\\\logo.jpeg\" -Force)",
+      "Bash(npm run *)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\Thena Lee\\\\Desktop\\\\Moss & Tail Landing Page\"; Start-Process powershell -ArgumentList \"-NoProfile -Command `\"Set-Location 'C:\\\\Users\\\\Thena Lee\\\\Desktop\\\\Moss & Tail Landing Page'; npm run dev`\"\" -WindowStyle Normal)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(grep -iE \"\\\\.\\(jpg|jpeg|png|webp|gif\\)$\")",
+      "Bash(grep -iE \"\\\\.jpeg$\")",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(vercel --version)",
+      "PowerShell($ghPath = \\(Get-ChildItem \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" -ErrorAction SilentlyContinue\\).FullName; if \\(-not $ghPath\\) { $ghPath = \\(Get-ChildItem \"${env:LOCALAPPDATA}\\\\Programs\\\\GitHub CLI\\\\gh.exe\" -ErrorAction SilentlyContinue\\).FullName }; if \\($ghPath\\) { Write-Output \"Found: $ghPath\"; & $ghPath --version | Select-Object -First 2 } else { Write-Output \"gh.exe not found in standard locations\"; Get-ChildItem -Path \"C:\\\\Program Files\",\"${env:LOCALAPPDATA}\\\\Programs\" -Recurse -Filter \"gh.exe\" -ErrorAction SilentlyContinue | Select-Object -First 5 FullName })"
+    ]
+  }
+}
